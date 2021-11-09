@@ -31,10 +31,11 @@ MD5Key and opcode will be provided by platform
 
 ### Launch Game
 
+> To launch game, POST to this URL
 ```json
-Description: Get Game Url 
-Method: POST URL: https://{domain}/aio/seamless.verialma/launchgame/getGameUrl 
-Headers: content-type (application/json)
+# Method: POST https://{domain}/aio/seamless.verialma/launchgame/getGameUrl 
+# Headers: content-type (application/json)
+```
 
 Parameters
 * opcode – string (Mandatory)
@@ -70,15 +71,13 @@ Parameter “code”
 * 699 – INVALID_PRODUCT_CODE
 * 617 – INVALID_SIGNATURE
 
-* One username will only allow with one memberId 
+** One username will only allow with one memberId 
 
 signature algorithm 
 
 MD5 hashing(opcode + memberId + password + product + type + username + MD5Key) 
 
 EG, MD5(abcd + 123 + 2Ywe8N92921 + EL + LC + testing123 + MD5Key)
-
-```
 
 ## Outbound Request
 
