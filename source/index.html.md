@@ -2,14 +2,11 @@
 title: API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
-  - shell
-  - ruby
-  - python
-  - javascript
+  - json
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
-  - <a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a>
+<!-- <a href='#'>Sign Up for a Developer Key</a> -->
+<!-- <a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a> -->
 
 includes:
   - success
@@ -21,19 +18,25 @@ code_clipboard: true
 
 meta:
   - name: description
-    content: Documentation for the Kittn API
+    content: Documentation for SEAMLESS API
 ---
 
-# Introduction
+# API Methods
+
+MD5Key and opcode will be provided by platform
+
+## INBOUND REQUEST
+
+![Inbound Request](images/inbound_request.png)
 
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
-## Level 2 header
+### Launch Game
 
-We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
-## Level 3 header
+Description: Get Game Url
 
-This example API documentation page was created with [Slate](https://github.com/slatedocs/slate). Feel free to edit it and use it as a base for your own API's documentation.
+Method: POST
+URL: https://{domain}/aio/seamless.verialma/launchgame/getGameUrl
+Headers: content-type (application/json)
 
 # Authentication
 
