@@ -27,9 +27,7 @@ MD5Key and opcode will be provided by platform
 
 ## INBOUND REQUEST
 
-0 ![Inbound Request]('/images/inbound_request.png')
-1 <%= image_tag "images/inbound_request.png" %>
-2 <%= image_tag 'images/inbound_request.png' %>
+<%= image_tag 'images/inbound_request.png', :alt => 'Inbound Request' %>
 
 ### Launch Game
 
