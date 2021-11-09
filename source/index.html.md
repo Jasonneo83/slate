@@ -27,7 +27,7 @@ MD5Key and opcode will be provided by platform
 
 ## INBOUND REQUEST
 
-![Inbound Request](/inbound_request.png)
+![Inbound Request]('/images/inbound_request.png')
 
 ### Launch Game
 
