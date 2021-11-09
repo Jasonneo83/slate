@@ -34,13 +34,12 @@ MD5Key and opcode will be provided by platform
 > To launch game, POST to this URL
 
 ```http
-POST "https://{domain}/aio/seamless.verialma/launchgame/getGameUrl"
+https://{domain}/aio/seamless.verialma/launchgame/getGameUrl
 ```
 
 > content-type: (application/json)
 
-
-Parameters
+###Parameters
 
 * opcode – string (Mandatory)
 * product – string(Mandatory) eg. “EL”, “PO”, “KK”(Refer to Chapter 4. Product List Table – Column Product Code)
@@ -57,13 +56,13 @@ Parameters
 * html5 – string(O) default = “0” (“0” – (Desktop), “1” – (Mobile))
 * gameid – string(O) default = “0”
 
-Returned data json 
+###Returned data json 
 
 * code – string 
 * url – string 
 * message – string 
 
-Parameter “code”
+###Parameter “code”
 
 * 0 – SUCCESS 
 * 2 – SYSTEM_EXCEPTION 
@@ -77,7 +76,9 @@ Parameter “code”
 * 699 – INVALID_PRODUCT_CODE
 * 617 – INVALID_SIGNATURE 
 
+<aside class="notice">
 ** One username will only allow with one memberId 
+</aside>
 
 signature algorithm 
 
