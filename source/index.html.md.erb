@@ -2,7 +2,7 @@
 title: API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
-  - json
+  - http
 
 toc_footers:
   - <a href='#'>Sign Up for a Developer Key</a>
@@ -33,12 +33,10 @@ MD5Key and opcode will be provided by platform
 
 > To launch game, POST to this URL
 
-```json
-curl "api_endpoint_here" \
-  -H "Authorization: meowmeowmeow"
+```http
+https://{domain}/aio/seamless.verialma/launchgame/getGameUrl
+content-type: (application/json)
 ```
-
-> With the following header: content-type (application/json)
 
 Parameters
 *opcode – string (Mandatory)
