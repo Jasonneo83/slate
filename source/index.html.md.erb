@@ -9,9 +9,11 @@ toc_footers:
   - <a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a>
 
 includes:
-  - product_list_table
   - success
   - errors
+  - language
+  - currency
+  - product
 
 search: true
 
@@ -33,6 +35,7 @@ MD5Key and opcode will be provided by platform
 ### Launch Game
 
 > Method: POST
+
 > Headers: content-type: (application/json)
 
 ```http
@@ -45,22 +48,15 @@ https://{domain}/aio/seamless.verialma/launchgame/getGameUrl
 Name | Type | Required | Example
 ---------- | ------- | ------- | ---------------
 opcode | string | Required | 
-product | string | Required | “EL”, “PO”, “KK” (Refer Product List Table)
-
-* opcode – string (Mandatory)
-* product – string(Mandatory) eg. “EL”, “PO”, “KK”(Refer to Chapter 4. Product List Table – Column Product Code)
-* type – string(Mandatory) eg. “LC”, “SL” LC – Indicated LIVE CASINO, SL - SLOT(Refer to Chapter 4. Product List Table – Column Product Type)
-* username – string(Mandatory)(member username on partner system) eg. (testing123) 
-    * min 6 characters, max 12 characters 
-    * only alphabet, digit
-* memberId – long(Mandatory) (memberId in partner system) eg. 123456
-* password – string(Mandatory) (member password for api request on partner system) 
-    * min 6 characters, max 12 characters 
-    * only alphabet, digit
-* signature – string(Mandatory)
-* lang – string(O) Please refer to chapter 2
-* html5 – string(O) default = “0” (“0” – (Desktop), “1” – (Mobile))
-* gameid – string(O) default = “0”
+product | string | Required | “EL”, “PO”, “KK” (Refer <a href='#product-list-table'>Product Code</a>)
+type | string | Required | “LC”, “SL” LC = LIVE CASINO, SL = SLOT (Refer <a href='#product-list-table'>Product Type</a>)
+username | string | Required | 6 to 12 characters. Only alphabet and digit e:g testing123
+memberId | long | Required | e.g: 123456
+password | string | Required | 6 to 12 characters. Only alphabet and digit allowed
+signature | string | Required
+lang | string | Optional | Refer to chapter 2
+html5 | string | Optional | default = “0” (“0” – (Desktop), “1” – (Mobile))
+gameid | string | Optional | default = “0”
 
 ###Returned data json 
 
