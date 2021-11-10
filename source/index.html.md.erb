@@ -9,8 +9,6 @@ toc_footers:
   - <a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a>
 
 includes:
-  - success
-  - errors
   - language
   - currency
   - product
@@ -155,12 +153,12 @@ MD5 hashing (method + opcode + product + userId + MD5Key)
 
 ### Returned JSON Data
 
-Returns | Type
----------- | -------
-code | string 
-opcode | string 
-userId | string 
-balance | decimal  (Latest Player Balance)
+Returns | Type | Description
+---------- | ------- | ----------
+code | string |
+opcode | string | 
+userId | string |
+balance | decimal | Latest Player Balance
 
 ### Error Code
 
@@ -170,3 +168,51 @@ Error Code | Description
 104 | User Not Exist
 105 | Account is Blocked
 617 | Invalid Password
+
+## Bet
+
+Description  
+User Place Bet  
+* Request might idempotent, please only process once if the transaction has been processed  
+* Required to check the “transactionId” whether exist in partner system and return “Duplicated” response  
+* Same “roundId” can have multiple different “transactionId”. Please response success (Example scenario, same player have place bet on same round in different time)  
+* Decrease player balance  
+* Return data parameter “balance” are required in 2 decimal places  
+* “Amount” property contained the value always required to deduct from player wallet  
+* “Bet” property contained the value that player have placed on the game  
+* Properties “Amount” and “Bet” might be different
+
+### Request Parameters
+
+Parameters | Type | Required | Description
+---------- | ------- | ------- | -----------
+method | string  | Required |
+amount | decimal | Required | 2 decimal places
+bet | string  | Required | 2 decimal places (Bet stakes)
+opcode | string  | Required |
+gameId | string  | Required |
+userId | string  | Required |
+eventDateTime | datetime | Required |  (“yyyy-MM-ddTHH:mm:ss.fff”)
+product | string  | Required |
+type | string  | Required |
+roundId | string  | Required |
+transactionId | string  | Required |
+status | string  | Required |  (“0” – processing, “1” – completed, “2” – cancel)
+betDetail | string  | Required |
+password | string  | Required |
+
+Password Algorithm  
+MD5 hashing(amount + betDetail + eventDateTime + method + opcode + product + roundId + status + transactionId + type + userId + MD5Key)
+
+### Returned JSON Data
+
+Returns | Type | Description
+---------- | ------- | --------
+code | string | 
+opcode | string |
+userId | string |
+balance | decimal | Latest Player Balance
+balancebefore | decimal | Balance Before Process
+
+
+
