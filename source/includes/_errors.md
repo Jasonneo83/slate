@@ -2,7 +2,7 @@
 
 The GSC seamless API uses the following error codes:
 
-Error Code | Meaning
+Error Code | Description
 ---------- | -------
 0 | Success
 5 | Record Not Found

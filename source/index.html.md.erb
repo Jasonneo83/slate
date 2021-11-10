@@ -9,6 +9,7 @@ toc_footers:
   - <a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a>
 
 includes:
+  - product_list_table
   - success
   - errors
 
@@ -31,15 +32,20 @@ MD5Key and opcode will be provided by platform
 
 ### Launch Game
 
-> To launch game, POST to this URL
+> Method: POST
+> Headers: content-type: (application/json)
 
 ```http
 https://{domain}/aio/seamless.verialma/launchgame/getGameUrl
 ```
 
-> content-type: (application/json)
 
 ###Parameters
+
+Name | Type | Required | Example
+---------- | ------- | ------- | ---------------
+opcode | string | Required | 
+product | string | Required | “EL”, “PO”, “KK” (Refer Product List Table)
 
 * opcode – string (Mandatory)
 * product – string(Mandatory) eg. “EL”, “PO”, “KK”(Refer to Chapter 4. Product List Table – Column Product Code)
@@ -77,7 +83,7 @@ https://{domain}/aio/seamless.verialma/launchgame/getGameUrl
 * 617 – INVALID_SIGNATURE 
 
 <aside class="notice">
-** One username will only allow with one memberId 
+One username only allows a single memberId 
 </aside>
 
 signature algorithm 
