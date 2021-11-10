@@ -86,9 +86,9 @@ One username only allows a single memberId
 </aside>
 
 <aside class="success">
-Signature Algorithm 
+Signature Algorithm  
 
-MD5 hashing(opcode + memberId + password + product + type + username + MD5Key) 
+MD5 hashing(opcode + memberId + password + product + type + username + MD5Key)  
 EG: MD5(abcd + 123 + 2Ywe8N92921 + EL + LC + testing123 + MD5Key)
 </aside>
 
@@ -128,6 +128,7 @@ All type of outbound request will have property “method” Operator could chec
 ```http
 {"method":"GetUserBalance","opcode":"test","userId":"testing123","product":"PK","password":"2 81cf3b242b390c4eac8fff2e0baf514"}
 ```
+
 > Example Response  
 ```http
 {"code":”0”,”opcode”:”test”,”userId”:”testing123”,"balance":952490}
