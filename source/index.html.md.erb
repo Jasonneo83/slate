@@ -48,35 +48,39 @@ https://{domain}/aio/seamless.verialma/launchgame/getGameUrl
 Name | Type | Required | Example
 ---------- | ------- | ------- | ---------------
 opcode | string | Required | 
-product | string | Required | “EL”, “PO”, “KK” (Refer <a href='#product-list-table'>Product Code</a>)
-type | string | Required | “LC”, “SL” LC = LIVE CASINO, SL = SLOT (Refer <a href='#product-list-table'>Product Type</a>)
-username | string | Required | 6 to 12 characters. Only alphabet and digit e:g testing123
-memberId | long | Required | e.g: 123456
+product | string | Required | “EL”, “PO”, “KK” (Refer <a href='#product'>Product Code</a>)
+type | string | Required | “LC”, “SL” LC = LIVE CASINO, SL = SLOT (Refer <a href='#product'>Product Type</a>)
+username | string | Required | 6 to 12 characters. Only alphabet and digit allowed E:g testing123
+memberId | long | Required | E.g: 123456
 password | string | Required | 6 to 12 characters. Only alphabet and digit allowed
 signature | string | Required
-lang | string | Optional | Refer to chapter 2
-html5 | string | Optional | default = “0” (“0” – (Desktop), “1” – (Mobile))
+lang | string | Optional | Refer <a href='#language'>Language</a>
+html5 | string | Optional | “0” – Desktop (Default), “1” – Mobile
 gameid | string | Optional | default = “0”
 
-###Returned data json 
+###Returned JSON data
 
-* code – string 
-* url – string 
-* message – string 
+Returns | Type
+------- | --------
+code | string 
+url | string 
+message | string 
 
 ###Parameter “code”
 
-* 0 – SUCCESS 
-* 2 – SYSTEM_EXCEPTION 
-* 8 – INVALID_PARAMETER
-* 17 – APIERROR
-* 19 – METHOD_NOT_EXIST
-* 21 – PRODUCT_IS_NOT_READY_FOR_PARTICULAR_AGENT
-* 22 – CURRENT PRODUCT NOT SUPPORT TYPE – “LC""
-* 23 – INVALID LANGUAGE FORMAT
-* 27 – USERNAME MUST BE UNIQUE
-* 699 – INVALID_PRODUCT_CODE
-* 617 – INVALID_SIGNATURE 
+Code | Description
+----- | -----------
+0 | SUCCESS 
+2 | SYSTEM EXCEPTION 
+8 | INVALID PARAMETER
+17 | API ERROR
+19 | METHOD NOT EXIST
+21 | PRODUCT IS NOT READY FOR PARTICULAR AGENT
+22 | CURRENT PRODUCT NOT SUPPORT TYPE – “LC""
+23 | INVALID LANGUAGE FORMAT
+27 | USERNAME MUST BE UNIQUE
+699 | INVALID PRODUCT CODE
+617 | INVALID SIGNATURE 
 
 <aside class="notice">
 One username only allows a single memberId 

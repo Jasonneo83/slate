@@ -1,4 +1,4 @@
-# Product List Table
+# Product
 
 Product Name | Product Code | Product Type
 ---------- | ------- | -------

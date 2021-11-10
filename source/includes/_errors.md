@@ -1,7 +1,5 @@
 # Errors
 
-The GSC seamless API uses the following error codes:
-
 Error Code | Description
 ---------- | -------
 0 | Success
