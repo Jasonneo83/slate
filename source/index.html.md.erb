@@ -93,4 +93,40 @@ EG, MD5(abcd + 123 + 2Ywe8N92921 + EL + LC + testing123 + MD5Key)
 
 ## Outbound Request
 
+> Partner will require to provide wallet endpoint Url Partner Wallet  
+> Method: POST  
+> Headers: content-type (application/json)
+
+``` http
+Url: (Example) https://partnerwalletendpointurl.com/seamless/wallet/request 
+```
+
 <%= image_tag 'images/outbound_request.png', :alt => 'Outbound Request' %>
+
+Description: 
+Wallet Request
+
+GSC seamless will only require 1 single wallet endpoint. All the outbound requests from GSC seamless will be send to partner system via the wallet endpoint provided by operator.
+There are 9 types of outbound requests GSC seamless will send to operator.
+
+* GetUserBalance 
+* Bet 
+* Result 
+* Refund 
+* Bonus 
+* Jackpot 
+* Promo 
+* TransferInOut 
+* Update
+
+All type of outbound request will have property “method” Operator could check on the property “method” to know which type of outbound have send from GSC seamless.
+
+## Get User Balance
+Description: 
+Get User Balance 
+
+<aside class="notice">
+Return data parameter “balance” are required in 2 decimal places
+</aside>
+
+
