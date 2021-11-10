@@ -85,11 +85,12 @@ Code | Description
 One username only allows a single memberId 
 </aside>
 
-signature algorithm 
+<aside class="success">
+Signature Algorithm 
 
 MD5 hashing(opcode + memberId + password + product + type + username + MD5Key) 
-
-EG, MD5(abcd + 123 + 2Ywe8N92921 + EL + LC + testing123 + MD5Key)
+EG: MD5(abcd + 123 + 2Ywe8N92921 + EL + LC + testing123 + MD5Key)
+</aside>
 
 ## Outbound Request
 
@@ -132,7 +133,6 @@ All type of outbound request will have property “method” Operator could chec
 {"code":”0”,”opcode”:”test”,”userId”:”testing123”,"balance":952490}
 ```
 
-
 Description: 
 Get User Balance 
 
@@ -150,8 +150,10 @@ userId | string  | Required
 product | string  | Required
 password | string  | Required
 
-password algorithm
+<aside class="success">
+Password Algorithm
 MD5 hashing(method + opcode + product + userId + MD5Key)
+</aside>
 
 ### Returned JSON Data
 
