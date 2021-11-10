@@ -122,6 +122,17 @@ There are 9 types of outbound requests GSC seamless will send to operator.
 All type of outbound request will have property “method” Operator could check on the property “method” to know which type of outbound have send from GSC seamless.
 
 ## Get User Balance
+
+> Example request 
+```http
+{"method":"GetUserBalance","opcode":"test","userId":"testing123","product":"PK","password":"2 81cf3b242b390c4eac8fff2e0baf514"}
+```
+> Example Response
+```http
+{"code":”0”,”opcode”:”test”,”userId”:”testing123”,"balance":952490}
+```
+
+
 Description: 
 Get User Balance 
 
@@ -129,4 +140,23 @@ Get User Balance
 Return data parameter “balance” are required in 2 decimal places
 </aside>
 
+### Request Parameters
 
+Parameters | Type | Required
+---------- | ------- | -------
+method | string  | Required
+opcode | string  | Required
+userId | string  | Required
+product | string  | Required
+password | string  | Required
+
+password algorithm
+MD5 hashing(method + opcode + product + userId + MD5Key)
+
+### Returned JSON Data
+
+<a href='#success'>JSON Data</a>
+
+### Error Code
+
+<a href='#errors'>Error Codes</a>
