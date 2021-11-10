@@ -85,8 +85,8 @@ Code | Description
 One username only allows a single memberId 
 </aside>
 
-Signature Algorithm
-MD5 hashing(opcode + memberId + password + product + type + username + MD5Key)
+Signature Algorithm  
+MD5 hashing(opcode + memberId + password + product + type + username + MD5Key)  
 EG: MD5(abcd + 123 + 2Ywe8N92921 + EL + LC + testing123 + MD5Key)
 
 ## Outbound Request
@@ -150,7 +150,7 @@ userId | string  | Required
 product | string  | Required
 password | string  | Required
 
-Password Algorithm
+Password Algorithm  
 MD5 hashing (method + opcode + product + userId + MD5Key)
 
 ### Returned JSON Data
