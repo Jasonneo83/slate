@@ -365,3 +365,269 @@ Code | Description
 105 | Account is Blocked
 617 | Invalid Password
 
+## Bonus
+
+Description  
+Player Bonus Win  
+* Request might idempotent, please only process once if the transaction has been processed  
+* Required to check the “transactionId” whether exist in partner system and return “Duplicated” response  
+* Return data parameter “balance” are required in 2 decimal places
+
+### Request Parameters
+
+Parameters | Type | Required | Description
+---------- | ------- | ------- | -----------
+method | string  | Required | Bonus
+amount | decimal | Required | 2 decimal places
+opcode | string  | Required |
+gameId | string  | Required |
+userId | string  | Required |
+eventDateTime | datetime | Required |  “yyyy-MM-ddTHH:mm:ss.fff” (UTC+0)
+product | string  | Required |
+type | string  | Required |
+roundId | string  | Required |
+transactionId | string  | Required | unique identifier
+status | string  | Required |  “0” – processing, “1” – completed, “2” – cancel
+betDetail | string  | Required |
+password | string  | Required |
+
+Password Algorithm  
+MD5 hashing (amount + betDetail + eventDateTime + method + opcode + product + roundId + status + transactionId + type + userId + MD5Key)
+
+### Returned JSON Data
+
+Returns | Type
+---------- | -------
+code | string
+opcode | string
+userId | string
+balance | decimal
+balancebefore | decimal
+
+### Error Codes
+
+Code | Description
+---------- | -------
+0 | Success
+12 | Game Under Maintenance
+20 | Duplicated Refund Record
+104 | User Not Exist
+105 | Account is Blocked
+617 | Invalid Password
+
+## Jackpot
+
+Description  
+Player Jackpot Win  
+* Request might idempotent, please only process once if the transaction has been processed  
+* Required to check the “transactionId” whether exist in partner system and return “Duplicated” response  
+* Return data parameter “balance” are required in 2 decimal places
+
+### Request Parameters
+
+Parameters | Type | Required | Description
+---------- | ------- | ------- | -----------
+method | string  | Required | Jackpot
+amount | decimal | Required | 2 decimal places
+opcode | string  | Required |
+gameId | string  | Required |
+userId | string  | Required |
+eventDateTime | datetime | Required |  “yyyy-MM-ddTHH:mm:ss.fff” (UTC+0)
+product | string  | Required |
+type | string  | Required |
+roundId | string  | Required |
+transactionId | string  | Required | unique identifier
+status | string  | Required |  “0” – processing, “1” – completed, “2” – cancel
+betDetail | string  | Required |
+password | string  | Required |
+
+Password Algorithm  
+MD5 hashing (amount + betDetail + eventDateTime + method + opcode + product + roundId + status + transactionId + type + userId + MD5Key)
+
+### Returned JSON Data
+
+Returns | Type
+---------- | -------
+code | string
+opcode | string
+userId | string
+balance | decimal
+balancebefore | decimal
+
+### Error Codes
+
+Code | Description
+---------- | -------
+0 | Success
+12 | Game Under Maintenance
+20 | Duplicated Refund Record
+104 | User Not Exist
+105 | Account is Blocked
+617 | Invalid Password
+
+## Promo
+
+Description  
+Player Promo Win  
+* Request might idempotent, please only process once if the transaction has been processed  
+* Required to check the “transactionId” whether exist in partner system and return “Duplicated” response  
+* Return data parameter “balance” are required in 2 decimal places
+
+### Request Parameters
+
+Parameters | Type | Required | Description
+---------- | ------- | ------- | -----------
+method | string  | Required | Promo
+amount | decimal | Required | 2 decimal places
+opcode | string  | Required |
+gameId | string  | Required |
+userId | string  | Required |
+eventDateTime | datetime | Required |  “yyyy-MM-ddTHH:mm:ss.fff” (UTC+0)
+product | string  | Required |
+type | string  | Required |
+roundId | string  | Required |
+transactionId | string  | Required | unique identifier
+status | string  | Required |  “0” – processing, “1” – completed, “2” – cancel
+betDetail | string  | Required |
+password | string  | Required |
+
+Password Algorithm  
+MD5 hashing (amount + betDetail + eventDateTime + method + opcode + product + roundId + status + transactionId + type + userId + MD5Key)
+
+### Returned JSON Data
+
+Returns | Type
+---------- | -------
+code | string
+opcode | string
+userId | string
+balance | decimal
+balancebefore | decimal
+
+### Error Codes
+
+Code | Description
+---------- | -------
+0 | Success
+12 | Game Under Maintenance
+20 | Duplicated Refund Record
+104 | User Not Exist
+105 | Account is Blocked
+617 | Invalid Password
+
+## TransferInOut
+
+Description  
+Transfer In or Out For Fishing or Table Game  
+* Request might idempotent, please only process once if the transaction has been processed  
+* Required to check the “transactionId” whether exist in partner system and return “Duplicated” response  
+* Parameter ‘type’ might be empty if ‘drct’ = “DEC”  
+* Parameter ‘amount’ will be the amount to deduct from player wallet (if parameter ‘drct’ = “DEC”) else ‘drct’ = “INC” will be the amount to add into player wallet  
+* If parameter ‘drct’ = “INC” it will include 2 more parameters which is parameter ‘bet’ and ‘payout’  
+* Return data parameter “balance” are required in 2 decimal places
+
+### Request Parameters
+
+Parameters | Type | Required | Description
+---------- | ------- | ------- | -----------
+method | string  | Required | TransferInOut
+amount | decimal | Required | 2 decimal places
+bet | decimal | Required | will be excluded if drct = ‘DEC’, 2 decimal places
+payout | decimal | Required | will be excluded if drct = ‘DEC’, 2 decimal places
+opcode | string  | Required |
+gameId | string  | Required |
+userId | string  | Required |
+eventDateTime | datetime | Required |  “yyyy-MM-ddTHH:mm:ss.fff” (UTC+0)
+product | string  | Required |
+type | string  | Required |
+roundId | string  | Required |
+transactionId | string  | Required | unique identifier
+status | string  | Required |  “0” – processing, “1” – completed, “2” – cancel
+betDetail | string  | Required |
+drct | string | Required | INC – INCREASE, DEC - DECREASE
+password | string  | Required |
+
+Password Algorithm  
+drct = “DEC”  
+MD5 hashing (amount + betDetail + drct + eventDateTime + method + opcode + product + roundId + status + transactionId + type + userId + MD5Key)
+
+drct = “INC”  
+MD5 hashing (amount + betDetail + bet + drct + eventDateTime + method + opcode + payout + product + roundId + status + transactionId + type + userId + MD5Key)
+
+### Returned JSON Data
+
+Returns | Type
+---------- | -------
+code | string
+opcode | string
+userId | string
+balance | decimal
+balancebefore | decimal
+
+### Error Codes
+
+Code | Description
+---------- | -------
+0 | Success
+12 | Game Under Maintenance
+20 | Duplicated Refund Record
+104 | User Not Exist
+105 | Account is Blocked
+617 | Invalid Password
+
+## Update
+
+Description  
+Update Result - Resettlement  
+* Request might idempotent, please only process once if the transaction has been processed  
+* Required to check the “transactionId” whether exist in partner system and return “Duplicated” response  
+* Parameter “amount” is required to update to the payout transaction that have been added before in partner system.  
+* If parameter “amount” is greater than the payout transaction amount in partner system. Please increase player wallet balance with the amount different, else decrease player wallet balance.  
+
+Example
+parameter(amount) - partner system exist payout transaction(amount)  
+* Return data parameter “balance” are required in 2 decimal places
+
+### Request Parameters
+
+Parameters | Type | Required | Description
+---------- | ------- | ------- | -----------
+method | string  | Required | Update
+amount | decimal | Required | 2 decimal places
+payout | decimal | Required | 2 decimal places
+opcode | string  | Required |
+gameId | string  | Required |
+userId | string  | Required |
+eventDateTime | datetime | Required |  “yyyy-MM-ddTHH:mm:ss.fff” (UTC+0)
+product | string  | Required |
+type | string  | Required |
+roundId | string  | Required |
+transactionId | string  | Required | unique identifier
+status | string  | Required |  “0” – processing, “1” – completed, “2” – cancel
+betDetail | string  | Required |
+password | string  | Required |
+
+Password Algorithm  
+MD5 hashing (amount + betDetail + eventDateTime + method + opcode + product + roundId + status + transactionId + type + userId + MD5Key)
+
+### Returned JSON Data
+
+Returns | Type
+---------- | -------
+code | string
+opcode | string
+userId | string
+balance | decimal
+balancebefore | decimal
+
+### Error Codes
+
+Code | Description
+---------- | -------
+0 | Success
+5 | Record Not Found
+12 | Game Under Maintenance
+20 | Duplicated Refund Record
+104 | User Not Exist
+105 | Account is Blocked
+617 | Invalid Password
