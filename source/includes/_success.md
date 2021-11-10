@@ -1,4 +1,4 @@
-# Returned JSON Data
+# Success
 
 The GSC seamless API returns the following JSON data:
 
