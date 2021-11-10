@@ -155,8 +155,18 @@ MD5 hashing(method + opcode + product + userId + MD5Key)
 
 ### Returned JSON Data
 
-<a href='#success'>JSON Data</a>
+Returns | Type
+---------- | -------
+code | string 
+opcode | string 
+userId | string 
+balance | decimal  (Latest Player Balance)
 
 ### Error Code
 
-<a href='#errors'>Error Codes</a>
+Error Code | Description
+---------- | -------
+0 | Success
+104 | User Not Exist
+105 | Account is Blocked
+617 | Invalid Password
