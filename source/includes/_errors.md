@@ -1,6 +1,6 @@
 # Errors
 
-Error Code | Description
+Code | Description
 ---------- | -------
 0 | Success
 5 | Record Not Found

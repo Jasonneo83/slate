@@ -85,7 +85,7 @@ One username only allows a single memberId
 
 Signature Algorithm  
 MD5 hashing(opcode + memberId + password + product + type + username + MD5Key)  
-EG: MD5(abcd + 123 + 2Ywe8N92921 + EL + LC + testing123 + MD5Key)
+EG: MD5 (abcd + 123 + 2Ywe8N92921 + EL + LC + testing123 + MD5Key)
 
 ## Outbound Request
 
@@ -162,7 +162,7 @@ balance | decimal | Latest Player Balance
 
 ### Error Code
 
-Error Code | Description
+Code | Description
 ---------- | -------
 0 | Success
 104 | User Not Exist
@@ -170,6 +170,19 @@ Error Code | Description
 617 | Invalid Password
 
 ## Bet
+
+> Example request
+
+```http
+{"amount":5.00, “bet”: 5.00,"method":"Bet","opcode":"test","gameId":null,"userId":"testing123","eventDateTime":"2021- 04-05T10:01:22.084","product":"PK","type":"SL","status":"0","password":"45651ed4ace8420ca7 b0caba93d2fde3","transactionId":"some unique tran id","roundId":"1379011269495369728","betDetail":"C-95"}
+```
+
+> Example Response
+
+```http
+{"code":”0”, ”opcode” : ”test”, ”userId” : ”testing123”, "balance" : 952485, ”balancebefore” : 952490}
+```
+
 
 Description  
 User Place Bet  
@@ -192,17 +205,17 @@ bet | string  | Required | 2 decimal places (Bet stakes)
 opcode | string  | Required |
 gameId | string  | Required |
 userId | string  | Required |
-eventDateTime | datetime | Required |  (“yyyy-MM-ddTHH:mm:ss.fff”)
+eventDateTime | datetime | Required |  “yyyy-MM-ddTHH:mm:ss.fff”
 product | string  | Required |
 type | string  | Required |
 roundId | string  | Required |
 transactionId | string  | Required |
-status | string  | Required |  (“0” – processing, “1” – completed, “2” – cancel)
+status | string  | Required |  “0” – processing, “1” – completed, “2” – cancel
 betDetail | string  | Required |
 password | string  | Required |
 
 Password Algorithm  
-MD5 hashing(amount + betDetail + eventDateTime + method + opcode + product + roundId + status + transactionId + type + userId + MD5Key)
+MD5 hashing (amount + betDetail + eventDateTime + method + opcode + product + roundId + status + transactionId + type + userId + MD5Key)
 
 ### Returned JSON Data
 
@@ -213,6 +226,86 @@ opcode | string |
 userId | string |
 balance | decimal | Latest Player Balance
 balancebefore | decimal | Balance Before Process
+
+### Error Codes
+
+Code | Description
+---------- | -------
+0 | Success
+12 | Game Under Maintenance
+18 | Duplicate Bet Record
+104 | User Not Exist
+105 | Account is Blocked
+604 | Insufficient Balance
+617 | Invalid Password
+
+## Result
+
+
+> Example request
+
+```http
+{"amount":5.00,”payout”: 5.00,"method":"Result","opcode":"test","gameId":null,"userId":"testing123","eventDateTime":"20 21-04-05T10:01:22.084","product":"PK","type":"SL","status":"1","password":"02c01c6264671c64 5361fbb8b29c86f5","transactionId":"some unique tran id","roundId":"1379011269495369728","betDetail":"C-95"}
+```
+
+> Example Response
+
+```http
+{"code":”0”, ”opcode” : ”test”, ”userId” : ”testing123”, "balance" : 952485, ”balancebefore” : 952490}
+```
+
+Description  
+User win lose result  
+* Request might idempotent, please only process once if the transaction has been processed  
+* Required to check the “transactionId” whether exist in partner system and transaction status in partner system is “completed” please return “Duplicated” response  
+* Same “roundId” can have multiple different “transactionId”. Please response success (Example scenario, same player have place bet on same round in different time)  
+* Increase player balance * Return data parameter “balance” are required in 2 decimal places  
+* Result request might send in with property “note” (value - RMWR) to inform operator result request should accept (even those there is no same “roundId” exist in operator system) and increase the balance based on the property “amount” and return to GSC seamless system.  
+* Property “amount” contained the value always required to increase into player wallet  
+* Property “payout” might contain negative value and might be different value with property “amount”
+
+### Request Parameters
+
+Parameters | Type | Required | Description
+---------- | ------- | ------- | -----------
+method | string  | Required | Result
+amount | decimal | Required | 2 decimal places
+payout | decimal  | Required | 2 decimal places (Bet stakes + winlose)
+opcode | string  | Required |
+gameId | string  | Required |
+userId | string  | Required |
+eventDateTime | datetime | Required |  “yyyy-MM-ddTHH:mm:ss.fff”
+product | string  | Required |
+type | string  | Required |
+roundId | string  | Required |
+transactionId | string  | Required | unique identifier
+status | string  | Required |  “0” – processing, “1” – completed, “2” – cancel
+betDetail | string  | Required |
+password | string  | Required |
+note | string | Optional | “RMWR” – Please accept this request
+
+### Returned JSON Data
+
+Returns | Type | Description
+---------- | ------- | --------
+code | string | 
+opcode | string |
+userId | string |
+balance | decimal | Latest Player Balance
+balancebefore | decimal | Balance Before Process
+
+### Error Codes
+
+Code | Description
+---------- | -------
+0 | Success
+5 | Record Not Found
+12 | Game Under Maintenance
+20 | Duplicated Update Record
+104 | User Not Exist
+105 | Account is Blocked
+617 | Invalid Password
+
 
 
 
