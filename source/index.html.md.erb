@@ -2,7 +2,7 @@
 title: API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
-  - http
+  - plaintext
 
 toc_footers:
 
@@ -33,12 +33,8 @@ MD5Key and opcode will be provided by platform
 > Method: POST  
 > Headers: content-type: (application/json)
 
-```http
-
-POST /test/demo_form.php HTTP/1.1
-Host: w3schools.com
-name1=value1&name2=value2 
-
+```plaintext
+https://{domain}/aio/seamless.verialma/launchgame/getGameUrl
 ```
 
 
@@ -95,7 +91,7 @@ EG: MD5 (abcd + 123 + 2Ywe8N92921 + EL + LC + testing123 + MD5Key)
 > Method: POST  
 > Headers: content-type (application/json)
 
-``` http
+``` plaintext
 Url: (Example) https://partnerwalletendpointurl.com/seamless/wallet/request 
 ```
 
@@ -123,13 +119,13 @@ All type of outbound request will have property “method” Operator could chec
 
 > Example request
 
-```http
+```plaintext
 {"method":"GetUserBalance","opcode":"test","userId":"testing123","product":"PK","password":"2 81cf3b242b390c4eac8fff2e0baf514"}
 ```
 
 > Example Response
 
-```http
+```plaintext
 {"code":”0”,”opcode”:”test”,”userId”:”testing123”,"balance":952490}
 ```
 
@@ -175,13 +171,13 @@ Code | Description
 
 > Example request
 
-```http
+```plaintext
 {"amount":5.00, “bet”: 5.00,"method":"Bet","opcode":"test","gameId":null,"userId":"testing123","eventDateTime":"2021- 04-05T10:01:22.084","product":"PK","type":"SL","status":"0","password":"45651ed4ace8420ca7 b0caba93d2fde3","transactionId":"some unique tran id","roundId":"1379011269495369728","betDetail":"C-95"}
 ```
 
 > Example Response
 
-```http
+```plaintext
 {"code":”0”, ”opcode” : ”test”, ”userId” : ”testing123”, "balance" : 952485, ”balancebefore” : 952490}
 ```
 
@@ -245,13 +241,13 @@ Code | Description
 
 > Example request
 
-```http
+```plaintext
 {"amount":5.00,”payout”: 5.00,"method":"Result","opcode":"test","gameId":null,"userId":"testing123","eventDateTime":"20 21-04-05T10:01:22.084","product":"PK","type":"SL","status":"1","password":"02c01c6264671c64 5361fbb8b29c86f5","transactionId":"some unique tran id","roundId":"1379011269495369728","betDetail":"C-95"}
 ```
 
 > Example Response
 
-```http
+```plaintext
 {"code":”0”, ”opcode” : ”test”, ”userId” : ”testing123”, "balance" : 952485, ”balancebefore” : 952490}
 ```
 
