@@ -115,7 +115,7 @@ There are 9 types of outbound requests GSC seamless will send to operator.
 
 All type of outbound request will have property “method” Operator could check on the property “method” to know which type of outbound have send from GSC seamless.
 
-## Get User Balance
+## GetUserBalance
 
 > Example request
 
@@ -183,7 +183,8 @@ Code | Description
 
 
 Description  
-User Place Bet  
+User Place Bet
+
 * Request might idempotent, please only process once if the transaction has been processed  
 * Required to check the “transactionId” whether exist in partner system and return “Duplicated” response  
 * Same “roundId” can have multiple different “transactionId”. Please response success (Example scenario, same player have place bet on same round in different time)  
@@ -252,7 +253,8 @@ Code | Description
 ```
 
 Description  
-User win lose result  
+User win lose result
+
 * Request might idempotent, please only process once if the transaction has been processed  
 * Required to check the “transactionId” whether exist in partner system and transaction status in partner system is “completed” please return “Duplicated” response  
 * Same “roundId” can have multiple different “transactionId”. Please response success (Example scenario, same player have place bet on same round in different time)  
@@ -307,15 +309,16 @@ Code | Description
 ## Refund
 
 Description  
-Refund player bet amount  
+Refund player bet amount
+
 * Request might idempotent, please only process once if the transaction has been processed  
-* Required to check the “transactionId” whether exist in partner system and transaction status in partner system is “cancel” please return “Duplicated” response  
-* Refund method will be trigger if there is “TransferInOut” method have sent to operator system due to timeout issue or any others.  
-* Same “roundId” can have multiple different “transactionId”. Please response success (Example scenario, same player have place bet on same round in different time)  
-* Refund request might be send to cancel only 1 transaction (Example, in same round might have multiple different ‘transactionId’ (“bet” request) and we might send refund request to cancel 1 of the bet request by transactionId). Please only refund the amount to the player balance.  
-* Refund player balance  
-* Return data parameter “balance” are required in 2 decimal places  
-* Refund request might include with optional property “note” (value = “TSEA”) to inform operator required to add credit based on previous “Bet” (same “transactionId”) request. (If note property value same with “TSEA” property “amount” will always be 0 in refund request, please refund the credit based on previous “Bet” (same “transactionId”) request)  
+* Required to check the “transactionId” whether exist in partner system and transaction status in partner system is “cancel” please return “Duplicated” response
+* Refund method will be trigger if there is “TransferInOut” method have sent to operator system due to timeout issue or any others.
+* Same “roundId” can have multiple different “transactionId”. Please response success (Example scenario, same player have place bet on same round in different time)
+* Refund request might be send to cancel only 1 transaction (Example, in same round might have multiple different ‘transactionId’ (“bet” request) and we might send refund request to cancel 1 of the bet request by transactionId). Please only refund the amount to the player balance.
+* Refund player balance
+* Return data parameter “balance” are required in 2 decimal places
+* Refund request might include with optional property “note” (value = “TSEA”) to inform operator required to add credit based on previous “Bet” (same “transactionId”) request. (If note property value same with “TSEA” property “amount” will always be 0 in refund request, please refund the credit based on previous “Bet” (same “transactionId”) request)
 * Refund request might include with optional property “note” (value = “NARN”) to inform operator to save the Refund request (transactionId) without modify player balance and return back with response “code = 5 (Record not found)”
 
 ### Request Parameters
@@ -366,9 +369,10 @@ Code | Description
 ## Bonus
 
 Description  
-Player Bonus Win  
-* Request might idempotent, please only process once if the transaction has been processed  
-* Required to check the “transactionId” whether exist in partner system and return “Duplicated” response  
+Player Bonus Win
+
+* Request might idempotent, please only process once if the transaction has been processed
+* Required to check the “transactionId” whether exist in partner system and return “Duplicated” response
 * Return data parameter “balance” are required in 2 decimal places
 
 ### Request Parameters
@@ -466,9 +470,10 @@ Code | Description
 ## Promo
 
 Description  
-Player Promo Win  
-* Request might idempotent, please only process once if the transaction has been processed  
-* Required to check the “transactionId” whether exist in partner system and return “Duplicated” response  
+Player Promo Win
+
+* Request might idempotent, please only process once if the transaction has been processed
+* Required to check the “transactionId” whether exist in partner system and return “Duplicated” response
 * Return data parameter “balance” are required in 2 decimal places
 
 ### Request Parameters
@@ -517,11 +522,12 @@ Code | Description
 
 Description  
 Transfer In or Out For Fishing or Table Game  
-* Request might idempotent, please only process once if the transaction has been processed  
-* Required to check the “transactionId” whether exist in partner system and return “Duplicated” response  
-* Parameter ‘type’ might be empty if ‘drct’ = “DEC”  
-* Parameter ‘amount’ will be the amount to deduct from player wallet (if parameter ‘drct’ = “DEC”) else ‘drct’ = “INC” will be the amount to add into player wallet  
-* If parameter ‘drct’ = “INC” it will include 2 more parameters which is parameter ‘bet’ and ‘payout’  
+
+* Request might idempotent, please only process once if the transaction has been processed
+* Required to check the “transactionId” whether exist in partner system and return “Duplicated” response
+* Parameter ‘type’ might be empty if ‘drct’ = “DEC”
+* Parameter ‘amount’ will be the amount to deduct from player wallet (if parameter ‘drct’ = “DEC”) else ‘drct’ = “INC” will be the amount to add into player wallet
+* If parameter ‘drct’ = “INC” it will include 2 more parameters which is parameter ‘bet’ and ‘payout’
 * Return data parameter “balance” are required in 2 decimal places
 
 ### Request Parameters
@@ -577,10 +583,11 @@ Code | Description
 
 Description  
 Update Result - Resettlement  
-* Request might idempotent, please only process once if the transaction has been processed  
-* Required to check the “transactionId” whether exist in partner system and return “Duplicated” response  
-* Parameter “amount” is required to update to the payout transaction that have been added before in partner system.  
-* If parameter “amount” is greater than the payout transaction amount in partner system. Please increase player wallet balance with the amount different, else decrease player wallet balance.  
+
+* Request might idempotent, please only process once if the transaction has been processed
+* Required to check the “transactionId” whether exist in partner system and return “Duplicated” response
+* Parameter “amount” is required to update to the payout transaction that have been added before in partner system.
+* If parameter “amount” is greater than the payout transaction amount in partner system. Please increase player wallet balance with the amount different, else decrease player wallet balance.
 
 Example
 parameter(amount) - partner system exist payout transaction(amount)  
