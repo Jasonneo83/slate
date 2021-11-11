@@ -82,7 +82,7 @@ One username only allows a single memberId
 </aside>
 
 Signature Algorithm  
-MD5 hashing(opcode + memberId + password + product + type + username + MD5Key)  
+`MD5 hashing (opcode + memberId + password + product + type + username + MD5Key)  
 EG: MD5 (abcd + 123 + 2Ywe8N92921 + EL + LC + testing123 + MD5Key)
 
 ## Outbound Request
@@ -146,8 +146,8 @@ userId | string  | Required
 product | string  | Required
 password | string  | Required
 
-Password Algorithm  
-MD5 hashing (method + opcode + product + userId + MD5Key)
+###Password Algorithm  
+`MD5 hashing (method + opcode + product + userId + MD5Key)
 
 ### Returned JSON Data
 
@@ -213,8 +213,8 @@ status | string  | Required |  “0” – processing, “1” – completed, �
 betDetail | string  | Required |
 password | string  | Required |
 
-Password Algorithm  
-MD5 hashing (amount + betDetail + eventDateTime + method + opcode + product + roundId + status + transactionId + type + userId + MD5Key)
+###Password Algorithm  
+`MD5 hashing (amount + betDetail + eventDateTime + method + opcode + product + roundId + status + transactionId + type + userId + MD5Key)
 
 ### Returned JSON Data
 
@@ -341,8 +341,8 @@ betDetail | string  | Required |
 password | string  | Required |
 note | string | Optional | “TSEA” – Refund credit back to player based on previous “BET” request
 
-Password Algorithm  
-MD5 hashing (amount + betDetail + eventDateTime + method + opcode + product + roundId + status + transactionId + type + userId + MD5Key)
+###Password Algorithm  
+`MD5 hashing (amount + betDetail + eventDateTime + method + opcode + product + roundId + status + transactionId + type + userId + MD5Key)
 
 ### Returned JSON Data
 
@@ -393,8 +393,8 @@ status | string  | Required |  “0” – processing, “1” – completed, �
 betDetail | string  | Required |
 password | string  | Required |
 
-Password Algorithm  
-MD5 hashing (amount + betDetail + eventDateTime + method + opcode + product + roundId + status + transactionId + type + userId + MD5Key)
+###Password Algorithm  
+`MD5 hashing (amount + betDetail + eventDateTime + method + opcode + product + roundId + status + transactionId + type + userId + MD5Key)
 
 ### Returned JSON Data
 
@@ -443,8 +443,8 @@ status | string  | Required |  “0” – processing, “1” – completed, �
 betDetail | string  | Required |
 password | string  | Required |
 
-Password Algorithm  
-MD5 hashing (amount + betDetail + eventDateTime + method + opcode + product + roundId + status + transactionId + type + userId + MD5Key)
+###Password Algorithm  
+`MD5 hashing (amount + betDetail + eventDateTime + method + opcode + product + roundId + status + transactionId + type + userId + MD5Key)
 
 ### Returned JSON Data
 
@@ -494,8 +494,8 @@ status | string  | Required |  “0” – processing, “1” – completed, �
 betDetail | string  | Required |
 password | string  | Required |
 
-Password Algorithm  
-MD5 hashing (amount + betDetail + eventDateTime + method + opcode + product + roundId + status + transactionId + type + userId + MD5Key)
+###Password Algorithm  
+`MD5 hashing (amount + betDetail + eventDateTime + method + opcode + product + roundId + status + transactionId + type + userId + MD5Key)
 
 ### Returned JSON Data
 
@@ -551,12 +551,12 @@ betDetail | string  | Required |
 drct | string | Required | INC – INCREASE, DEC - DECREASE
 password | string  | Required |
 
-Password Algorithm  
-drct = “DEC”  
-MD5 hashing (amount + betDetail + drct + eventDateTime + method + opcode + product + roundId + status + transactionId + type + userId + MD5Key)
+###Password Algorithm  
+`drct = “DEC”  
+`MD5 hashing (amount + betDetail + drct + eventDateTime + method + opcode + product + roundId + status + transactionId + type + userId + MD5Key)
 
-drct = “INC”  
-MD5 hashing (amount + betDetail + bet + drct + eventDateTime + method + opcode + payout + product + roundId + status + transactionId + type + userId + MD5Key)
+`drct = “INC”  
+`MD5 hashing (amount + betDetail + bet + drct + eventDateTime + method + opcode + payout + product + roundId + status + transactionId + type + userId + MD5Key)
 
 ### Returned JSON Data
 
@@ -612,8 +612,8 @@ status | string  | Required |  “0” – processing, “1” – completed, �
 betDetail | string  | Required |
 password | string  | Required |
 
-Password Algorithm  
-MD5 hashing (amount + betDetail + eventDateTime + method + opcode + product + roundId + status + transactionId + type + userId + MD5Key)
+###Password Algorithm  
+`MD5 hashing (amount + betDetail + eventDateTime + method + opcode + product + roundId + status + transactionId + type + userId + MD5Key)
 
 ### Returned JSON Data
 
