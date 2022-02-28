@@ -1,6 +1,6 @@
 # Product
 
-Product Code 供应商代号 | Description 供应商说明 | Supported Game Type Code 支持的游戏类型
+Provider Code 供应商代号 | Description 供应商说明 | Supported Game Type Code 支持的游戏类型
 ------------------------|-----------------------|---------------------------------------
 AI|ASIAGAMING|SL
 BN|BIG GAMING|LC
@@ -65,7 +65,7 @@ QH|QTECH|
 QQ|QQ Keno SW|
 R2|RTG|
 RK|RED RAKE|
-s7|sexy baccarat[seamlesswallet]|
+s7|sexy baccarat|
 SD|SPADEGAMING|
 SE|Simple Play Seamless|
 T1|TTG Seamless|
