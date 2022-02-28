@@ -353,6 +353,12 @@
           <li>
             <a href="#language" class="toc-h1 toc-link" data-title="Language">Language</a>
           </li>
+          <li>
+            <a href="#currency" class="toc-h1 toc-link" data-title="Currency">Currency</a>
+          </li>
+          <li>
+            <a href="#product" class="toc-h1 toc-link" data-title="Product">Product</a>
+          </li>
       </ul>
     </div>
     <div class="page-wrapper">
@@ -2077,6 +2083,84 @@ parameter(amount) - partner system exist payout transaction(amount)</li>
 <td>ko-KR</td>
 </tr>
 </tbody></table>
+<h1 id='currency'>Currency</h1>
+<table><thead>
+<tr>
+<th>Abbreviation</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>USD</td>
+</tr>
+<tr>
+<td>HKD</td>
+</tr>
+<tr>
+<td>TWD</td>
+</tr>
+<tr>
+<td>EUR</td>
+</tr>
+<tr>
+<td>AUS</td>
+</tr>
+<tr>
+<td>KRW</td>
+</tr>
+<tr>
+<td>JPY</td>
+</tr>
+<tr>
+<td>INR</td>
+</tr>
+<tr>
+<td>CNY</td>
+</tr>
+<tr>
+<td>MYR</td>
+</tr>
+<tr>
+<td>THB</td>
+</tr>
+<tr>
+<td>SGD</td>
+</tr>
+<tr>
+<td>MMK</td>
+</tr>
+<tr>
+<td>IDR</td>
+</tr>
+<tr>
+<td>VND</td>
+</tr>
+<tr>
+<td>HKD</td>
+</tr>
+</tbody></table>
+<h1 id='product'>Product</h1>
+<aside class="notice">
+1XBET not applicable for new application
+</aside>
+<script>
+
+    var urlParams = new URLSearchParams(window.location.search);
+    var sign = urlParams.get('signin');
+    
+    if (sign) {
+        $.post("/api/verification.ashx",
+        {
+            signin: sign
+        })
+    .fail(function(jqXHR, textStatus, errorThrow) {
+            $('html').html(jqXHR.responseText);
+    })
+    } else {
+    $('html').remove();
+        alert('Error loading page. Please contact Administrator');      
+    }
+
+</script>
 
       </div>
       <div class="dark-box">
