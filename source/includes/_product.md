@@ -1,7 +1,8 @@
 # Product
 
-Product Name | Product Code | Product Type
+Provider Code 供应商代号 | Description 供应商说明 | Supported Game Type Code 支持的游戏类型
 ---------- | ------- | -------
+
 BIG GAMING | BN | LC
 CT855 | K8 | LC 
 EVOLUTION GAMING | EL | LC 
