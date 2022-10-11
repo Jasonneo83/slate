@@ -348,6 +348,9 @@
                   <li>
                     <a href="#update" class="toc-h2 toc-link" data-title="Update">Update</a>
                   </li>
+                  <li>
+                    <a href="#resettle" class="toc-h2 toc-link" data-title="Resettle">Resettle</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -2033,6 +2036,178 @@ parameter(amount) - partner system exist payout transaction(amount)</li>
 <tr>
 <td>20</td>
 <td>Duplicated Refund Record</td>
+</tr>
+<tr>
+<td>104</td>
+<td>User Not Exist</td>
+</tr>
+<tr>
+<td>105</td>
+<td>Account is Blocked</td>
+</tr>
+<tr>
+<td>617</td>
+<td>Invalid Password</td>
+</tr>
+</tbody></table>
+<h2 id='resettle'>Resettle</h2>
+<blockquote>
+<p>Example request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{"addAmount":950.00,"deductAmount":0.00,"method":"Resettle","opcode":"b24m","userId":"P102908","updateDateTime":"2022-10-11T05:33:40.942","winlostDateTime":"2022-10-06T04:00:00.000","product":"OW","type":"SB","status":"1","transactionId":"4258|100_6_265654resettle0","roundId":"4258100_84993^","password":"77ea84f1a850a9ab318e9a415b08a898"}
+</code></pre></div>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>{"code":”0”, ”opcode” : ”test”, ”userId” : ”testing123”, "balance" : 952485, ”balancebefore” : 952490}
+</code></pre></div><h3 id='description-11'>Description</h3>
+<p>Resettle previous &quot;settled&quot; result</p>
+<h3 id='request-parameters-10'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameters</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>method</td>
+<td>string</td>
+<td>Required</td>
+<td>Result</td>
+</tr>
+<tr>
+<td>addAmount</td>
+<td>decimal</td>
+<td>Required</td>
+<td>2 decimal places</td>
+</tr>
+<tr>
+<td>deductAmount</td>
+<td>decimal</td>
+<td>Required</td>
+<td>2 decimal places</td>
+</tr>
+<tr>
+<td>opcode</td>
+<td>string</td>
+<td>Required</td>
+<td></td>
+</tr>
+<tr>
+<td>userId</td>
+<td>string</td>
+<td>Required</td>
+<td></td>
+</tr>
+<tr>
+<td>updateDateTime</td>
+<td>datetime</td>
+<td>Required</td>
+<td>“yyyy-MM-ddTHH:mm:ss.fff” (UTC+0)</td>
+</tr>
+<tr>
+<td>winlostDateTime</td>
+<td>datetime</td>
+<td>Required</td>
+<td>“yyyy-MM-ddTHH:mm:ss.fff” (UTC+0)</td>
+</tr>
+<tr>
+<td>product</td>
+<td>string</td>
+<td>Required</td>
+<td></td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>Required</td>
+<td></td>
+</tr>
+<tr>
+<td>roundId</td>
+<td>string</td>
+<td>Required</td>
+<td></td>
+</tr>
+<tr>
+<td>transactionId</td>
+<td>string</td>
+<td>Required</td>
+<td>unique identifier</td>
+</tr>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>Required</td>
+<td>“0” – processing, “1” – completed, “2” – cancel</td>
+</tr>
+<tr>
+<td>password</td>
+<td>string</td>
+<td>Required</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id='password-algorithm-9'>Password Algorithm</h3>
+<p><code>Convert.ToDecimal(addAmount .ToString(&quot;#.00&quot;)) + Convert.ToDecimal(deductAmount .ToString(&quot;#.00&quot;)) + action.RESETTLE + op_code + product + userId + MD5Key</code></p>
+<h3 id='returned-json-data-11'>Returned JSON Data</h3>
+<table><thead>
+<tr>
+<th>Returns</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>code</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>opcode</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>userId</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>balance</td>
+<td>decimal</td>
+<td>Latest Player Balance</td>
+</tr>
+<tr>
+<td>balancebefore</td>
+<td>decimal</td>
+<td>Balance Before Process</td>
+</tr>
+</tbody></table>
+<h3 id='error-codes-9'>Error Codes</h3>
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>0</td>
+<td>Success</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Record Not Found</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Game Under Maintenance</td>
+</tr>
+<tr>
+<td>20</td>
+<td>Duplicated Update Record</td>
 </tr>
 <tr>
 <td>104</td>
