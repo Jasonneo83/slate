@@ -637,3 +637,63 @@ Code | Description
 104 | User Not Exist
 105 | Account is Blocked
 617 | Invalid Password
+
+## Resettle
+
+> Example request
+
+```plaintext
+{"addAmount":950.00,"deductAmount":0.00,"method":"Resettle","opcode":"b24m","userId":"P102908","updateDateTime":"2022-10-11T05:33:40.942","winlostDateTime":"2022-10-06T04:00:00.000","product":"OW","type":"SB","status":"1","transactionId":"4258|100_6_265654resettle0","roundId":"4258100_84993^","password":"77ea84f1a850a9ab318e9a415b08a898"}
+```
+
+> Example Response
+
+```plaintext
+{"code":”0”, ”opcode” : ”test”, ”userId” : ”testing123”, "balance" : 952485, ”balancebefore” : 952490}
+```
+
+###Description  
+Resettle previous "settled" result
+
+### Request Parameters
+
+Parameters | Type | Required | Description
+---------- | ------- | ------- | -----------
+method | string  | Required | Result
+addAmount | decimal | Required | 2 decimal places
+deductAmount | decimal  | Required | 2 decimal places
+opcode | string  | Required |
+userId | string  | Required |
+updateDateTime | datetime | Required | “yyyy-MM-ddTHH:mm:ss.fff” (UTC+0)
+winlostDateTime | datetime | Required | “yyyy-MM-ddTHH:mm:ss.fff” (UTC+0)
+product | string  | Required |
+type | string  | Required |
+roundId | string  | Required |
+transactionId | string  | Required | unique identifier
+status | string  | Required |  “0” – processing, “1” – completed, “2” – cancel
+password | string  | Required |
+
+###Password Algorithm  
+`Convert.ToDecimal(addAmount .ToString("#.00")) + Convert.ToDecimal(deductAmount .ToString("#.00")) + action.RESETTLE + op_code + product + userId + MD5Key`
+
+### Returned JSON Data
+
+Returns | Type | Description
+---------- | ------- | --------
+code | string | 
+opcode | string |
+userId | string |
+balance | decimal | Latest Player Balance
+balancebefore | decimal | Balance Before Process
+
+### Error Codes
+
+Code | Description
+---------- | -------
+0 | Success
+5 | Record Not Found
+12 | Game Under Maintenance
+20 | Duplicated Update Record
+104 | User Not Exist
+105 | Account is Blocked
+617 | Invalid Password
